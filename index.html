@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grundgerüst Webseite</title>
+
+<!-- ================= CSS ================= -->
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: system-ui, Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+  }
+
+  /* ---------- Kopfbereich mit Logo ---------- */
+ .hero {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+/* Diashow füllt den Hero komplett */
+  .slideshow {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 100px;
+  overflow: hidden;
+  background: #111;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Abdunkelung, damit Logo und Text lesbar bleiben */
+.slideshow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.25) 50%,
+    rgba(0,0,0,0.45) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+  h1 { font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: #fff;
+  text-align:  center;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  letter-spacing: 0.01em; }
+
+/* Header liegt über den Bildern */
+.hero-header {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 20px;
+  pointer-events: none;
+}
+  /* ---------- Reiter / Tabs ---------- */
+  nav.tabs {
+    display: flex;
+    background: #66cdaa;
+    flex-wrap: wrap;
+  }
+
+  nav.tabs button {
+    flex: 1 1 auto;
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 1rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+  }
+
+  nav.tabs button:hover { background: #458b74; color: #fff; }
+
+  nav.tabs button.active {
+    color: #fff;
+    border-bottom-color: #f39c12;
+    background: #458b74;
+  }
+  
+
+  /* ---------- Inhaltsbereich ---------- */
+  main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  .tab-content {
+    display: none;
+    gap: 20px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+    line-height: 1.6;
+  }
+
+  .rechtes-bild {
+  max-width: 300px; /* Bestimmt die maximale Größe des Bildes */
+  height: fit-content;
+  float: right;
+}
+
+  .tab-content.active { display: block; }
+
+  h2 { margin-bottom: 12px; }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: .9rem;
+  }
+
+  @media (max-width: 600px) {
+    .slideshow { height: 200px; }
+    nav.tabs button { flex: 1 1 50%; }
+  }
+
+  .tabs {
+  display: flex;
+  gap: 4px;
+  position: relative;   /* wichtig */
+  
+}
+
+.tab-wrapper {
+   display: flex;
+   flex-direction: column;
+  gap: 4px;
+  position: relative; 
+  flex: 1 1 auto;
+
+
+}
+
+.tab-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 300px;
+  margin: 0;
+  padding: 6px 0;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.tab-wrapper:hover .tab-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tab-dropdown a {
+  display: inline-block;
+  padding: 11px 18px;
+  color: #222;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.15s, padding-left 0.15s;
+}
+
+.tab-dropdown a:hover {
+  background: #f4f4f4;
+  padding-left: 24px;
+}
+
+  p {
+    white-space: pre-line;
+
+  }
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HTML ================= -->
+
+<!-- Logo oben links -->
+<div class="hero">
+
+  <!-- Diashow als Hintergrund -->
+  <div class="slideshow">
+    <div class="slide active">
+      <img src="images/2Liga_Einlauf.jpg" alt="Bild 1">
+    </div>
+    <div class="slide">
+      <img src="images/Frauen.jpg" alt="Bild 2">
+    </div>
+    <div class="slide">
+      <img src="images/2Liga_Einlauf.jpg" alt="Bild 3">
+    </div>
+
+    <button class="slide-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="slide-btn next" onclick="changeSlide(1)">&#10095;</button>
+
+    <div class="dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+  </div>
+
+  <!-- Logo + Titel darüber -->
+  <header class="hero-header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </a>
+    <h1>Handball Zurzibiet</h1>
+  </header>
+
+</div>
+<!-- Reiter -->
+<nav class="tabs">
+  <button class="active" data-tab="home">Home</button>
+  <button data-tab="ueber">Über uns</button>
+  <button data-tab="Schlumpfball">Schlumpfball</button>
+  <button data-tab="Termine">Termine</button>
+
+
+  <div class="tab-wrapper">
+    <button data-tab="teams">Teams</button>
+    <ul class="tab-dropdown">
+      <button data-tab="mini klingnau">Mini Klingnau</button>
+      <button data-tab="mini zurzach">Mini Zurzach</button>
+      <button data-tab="3.Liga Frauen">3.Liga Frauen</button>
+      <button data-tab="SPL 1 Frauen">SPL 1 Frauen</button>
+      <button data-tab="2. Liga Männer">2. Liga Männer</button>
+      <button data-tab="3. Liga Männer">3. Liga Männer</button>
+      <button data-tab="U19-Junioren Promotion">U19-Junioren Promotion</button>
+      <button data-tab="U19-Junioren Elite">U19-Junioren Elite</button>
+      <button data-tab="U17-Junioren Promotion">U17-Junioren Promotion</button>
+      <button data-tab="U17-Junioren Elite">U17-Junioren Elite</button>
+      <button data-tab="U15-Junioren Promotion & Inter">U15-Junioren Promotion & Inter</button>
+      <button data-tab="U15-Junioren Elite">U15-Junioren Elite</button>
+      <button data-tab="U18-Juniorinnen Leistung">U18-Juniorinnen Leistung</button>
+      <button data-tab="U16-Juniorinnen Elite">U16-Juniorinnen Elite</button>
+      <button data-tab="U14-Juniorinnen Promotion">U14-Juniorinnen Promotion</button>
+      <button data-tab="U14-Juniorinnen Elite">U14-Juniorinnen Elite</button>
+      <button data-tab="U13-Team Regional">U13-Team Regional</button>
+      <button data-tab="U13 Inter">U13 Inter</button>
+      
+      
+    </ul>
+</div>
+
+ <button data-tab="Mitmachen">Mitmachen</button>
+ <button data-tab="Vorstand/Kontakt">Vorstand/Kontakt</button>
+
+</nav>
+
+<!-- Inhalt unter den Reitern -->
+<main>
+  <section class="tab-content active" id="home">
+    <h2>Home</h2>
+    <p>Newsletter</p>
+  </section>
+
+  <section class="tab-content" id="ueber">
+    <h2>Verein Handball Zurzibiet</h2>
+    <img src="images/random.jpg" alt="random" class="rechtes-bild">
+    <p><strong>«Handball Zurzibiet» wurde 2009 aus den Handball Mannschaften der Vereine TV Klingnau und TV Zurzach gegründet. Wir engagieren uns sehr in der Nachwuchsarbeit, arbeiten regional mit anderen Vereinen zusammen und stellen neben einer grossen Minihandball-Abteilung somit Mannschaften in allen Altersklassen.</strong>
+      Der Verein Handball Zurzibiet mit Sitz in Klingnau und Bad Zurzach wurde 2009 gegründet. Damals kam es zu einem Zusammenschluss der Handball-Abteilungen des TV Klingnau und des TV Zurzach. Dies war die logische Folge einer jahrelangen Zusammenarbeit. Die beiden Handball-Abteilungen führten gemeinsame Teams, die als Spielgemeinschaften (SG) die Meisterschaft bestritten. 2006 beging man bereits ein gemeinsames Saisonabschlussfest. In der Saison 2007/08 nahmen erstmals Teams unter der Bezeichnung «SG Handball Zurzibiet» an der Meisterschaft teil. Die gemeinsame Identität der Handballer auf beiden Seiten des Achenbergs war eine Selbstverständlichkeit geworden – gerade bei jenen, die in ihrer Juniorinnen- oder Juniorenzeit in SG-Mannschaften gespielt hatten.
+
+Die Fusion machte es möglich, die Kräfte zu bündeln. Neu gab es noch einen statt zwei Vorstände. Zudem fielen für die Klingnauer Mitglieder des TVK Gebühren an den Schweizerischen Turnverein weg. Handball Zurzibiet ist selbstständig, blieb dabei aber dem TV Zurzach (Holding-Struktur) angeschlossen. Mittlerweile ist die Verbindung sehr lose. Beim TV Klingnau war dies aufgrund der Vereinsstruktur leider nicht möglich. So war bei dessen GV im 2009 auch das Bedauern gross, als die Handballer als grösste Abteilung den TVK verliessen. Auch von der Klingnauer Handballerseite war eine gewisse Wehmut dabei: Man denke nur an die fünf NLB-Saison des Fanionteams und der Teilnahme an der Aufstiegsrunde zur NLA, die Derbys gegen den TV Endingen in einer proppenvollen Schützenmatthalle – oder an die unvergesslichen Spiele des TV Klingnau gegen das russische Team ZSKA Moskau (1988; 100. Geburtstag des Vereins) und die Nationalmannschaft von Südkorea.</p>
+    <h2>Vom Mini zum Leistungssportler</h2>
+  </section>
+
+  <section class="tab-content" id="team">
+    <h2>Team</h2>
+    <p>Hier steht der Inhalt zu „Über uns“.</p>
+  </section>
+
+  <section class="tab-content" id="Mitmachen">
+    <h2>Mitmachen</h2>
+    <p>Hier steht der Inhalt zu den Leistungen.</p>
+  </section>
+
+  <section class="tab-content" id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Hier stehen die Kontaktdaten.</p>
+  </section>
+ <section class="tab-content" id="2.Liga">
+    <h2>2.Liga</h2>
+    <p>Hier stehen die 2.Liga.</p>
+  </section>
+
+</main>
+
+<footer>© 2026 Meine Webseite</footer>
+
+<!-- ================= JavaScript ================= -->
+<script>
+  /* ---------- Diashow ---------- */
+
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let timer = setInterval(() => changeSlide(1), 4000);
+
+function showSlide(n) {
+  current = (n + slides.length) % slides.length;
+  slides.forEach((s, i) => s.classList.toggle('active', i === current));
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+}
+
+function changeSlide(step) {
+  showSlide(current + step);
+}
+
+function goToSlide(n) {
+  showSlide(n);
+  clearInterval(timer);
+  timer = setInterval(() => changeSlide(1), 4000);
+}
+/* ---------- Reiter / Tabs ---------- */
+  const tabButtons = document.querySelectorAll('nav.tabs button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
