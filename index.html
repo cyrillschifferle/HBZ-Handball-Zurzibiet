@@ -217,7 +217,14 @@
 
   }
 
+[data-content] {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
 
+body.geladen [data-content] {
+  opacity: 1;
+}
 
 
 
@@ -337,6 +344,11 @@ Die Fusion machte es möglich, die Kräfte zu bündeln. Neu gab es noch einen st
     <p>Hier stehen die 2.Liga.</p>
   </section>
 
+ <section id="Schlumpfball" class="inhalt">
+  <h2 data-content="ueber_uns.titel"></h2>
+  <p data-content="ueber_uns.text"></p>
+</section>
+
 </main>
 
 <footer>© 2026 Meine Webseite</footer>
@@ -378,6 +390,21 @@ function goToSlide(n) {
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
+
+
+ fetch('content.json')
+  .then(r => r.json())
+  .then(data => {
+    document.querySelectorAll('[data-content]').forEach(el => {
+      const wert = el.dataset.content
+        .split('.')
+        .reduce((obj, key) => obj?.[key], data);
+      if (wert) el.innerHTML = wert;
+    });
+    document.body.classList.add('geladen');
+  })
+  .catch(err => console.error('content.json konnte nicht geladen werden:', err));
+ 
 </script>
 
 </body>
