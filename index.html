@@ -137,6 +137,17 @@
   float: right;
 }
 
+
+ [data-content] {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+body.geladen [data-content] {
+  opacity: 1;
+}
+
+ 
   .tab-content.active { display: block; }
 
   h2 { margin-bottom: 12px; }
@@ -217,14 +228,6 @@
 
   }
 
-[data-content] {
-  opacity: 0;
-  transition: opacity .3s ease;
-}
-
-body.geladen [data-content] {
-  opacity: 1;
-}
 
 
 
