@@ -347,9 +347,14 @@ Die Fusion machte es möglich, die Kräfte zu bündeln. Neu gab es noch einen st
     <p>Hier stehen die 2.Liga.</p>
   </section>
 
- <section id="Schlumpfball" class="tab-content">
+<section id="Schlumpfball" class="tab-content">
   <h2 data-content="ueber_uns.titel"></h2>
   <p data-content="ueber_uns.text"></p>
+</section>
+
+<section id="Termine" class="tab-content">
+  <h2 data-content="kontakt.titel"></h2>
+  <p data-content="kontakt.text"></p>
 </section>
 
 </main>
@@ -358,6 +363,21 @@ Die Fusion machte es möglich, die Kräfte zu bündeln. Neu gab es noch einen st
 
 <!-- ================= JavaScript ================= -->
 <script>
+
+ fetch('content.json')
+  .then(r => r.json())
+  .then(data => {
+    document.querySelectorAll('[data-content]').forEach(el => {
+      const wert = el.dataset.content
+        .split('.')
+        .reduce((obj, key) => obj?.[key], data);
+      if (wert) el.innerHTML = wert;
+    });
+    document.body.classList.add('geladen');
+  })
+  .catch(err => console.error('content.json konnte nicht geladen werden:', err));
+ 
+ 
   /* ---------- Diashow ---------- */
 
 let current = 0;
@@ -395,19 +415,7 @@ function goToSlide(n) {
   });
 
 
- fetch('content.json')
-  .then(r => r.json())
-  .then(data => {
-    document.querySelectorAll('[data-content]').forEach(el => {
-      const wert = el.dataset.content
-        .split('.')
-        .reduce((obj, key) => obj?.[key], data);
-      if (wert) el.innerHTML = wert;
-    });
-    document.body.classList.add('geladen');
-  })
-  .catch(err => console.error('content.json konnte nicht geladen werden:', err));
- 
+
 </script>
 
 </body>
