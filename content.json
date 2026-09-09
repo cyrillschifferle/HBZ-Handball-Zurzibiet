@@ -9,7 +9,7 @@
   },
   "kontakt": {
     "titel": "Kontakt",
-    "text": "<strong>Musterstraße</strong> 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br><strong>NächsterTitel</strong>"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>NächsterTitel"
   }
 
   }
