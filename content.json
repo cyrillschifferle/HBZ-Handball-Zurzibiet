@@ -9,7 +9,7 @@
   },
   "Schlumpfball": {
     "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 /<b>Fetter Text</b> 567890<br><br>Nächster Titel oder Text"
   },
   "Termine": {
     "titel": "Kontakt",
