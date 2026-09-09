@@ -328,6 +328,16 @@ Die Fusion machte es möglich, die Kräfte zu bündeln. Neu gab es noch einen st
     <h2>Vom Mini zum Leistungssportler</h2>
   </section>
 
+  <section id="Schlumpfball" class="tab-content">
+  <h2 data-content="schlumpfball.titel"></h2>
+  <p data-content="schlumpfball.text"></p>
+</section>
+
+<section id="Termine" class="tab-content">
+  <h2 data-content="termine.titel"></h2>
+  <p data-content="termine.text"></p>
+</section>
+
   <section class="tab-content" id="teams">
     <h2 data-content="teams.titel"></h2>
     <p data-content="teams.text"></p>
@@ -338,21 +348,27 @@ Die Fusion machte es möglich, die Kräfte zu bündeln. Neu gab es noch einen st
     <p data-content="mitmachen.text"></p>
   </section>
 
+<section id="Vorstand/Kontakt" class="tab-content">
+  <h2 data-content="kontakt.titel"></h2>
+
+  <img 
+  src= data-content="kontakt.bild" 
+  alt="random" 
+  class="rechtes-bild"
+  >
+
+  <p data-content="kontakt.text"></p>
+</section>
+
   </section>
  <section class="tab-content" id="2.Liga">
     <h2>2.Liga</h2>
     <p>Hier stehen die 2.Liga.</p>
   </section>
 
- <section id="Schlumpfball" class="tab-content">
-  <h2 data-content="schlumpfball.titel"></h2>
-  <p data-content="schlumpfball.text"></p>
-</section>
+ 
 
- <section id="Vorstand/Kontakt" class="tab-content">
-  <h2 data-content="kontakt.titel"></h2>
-  <p data-content="kontakt.text"></p>
-</section>
+ 
  
 </main>
 
@@ -397,18 +413,31 @@ function goToSlide(n) {
   });
 
 
- fetch('content.json')
-  .then(r => r.json())
+ fetch("content.json")
+  .then(response => response.json())
   .then(data => {
-    document.querySelectorAll('[data-content]').forEach(el => {
-      const wert = el.dataset.content
-        .split('.')
-        .reduce((obj, key) => obj?.[key], data);
-      if (wert) el.innerHTML = wert;
+    document.querySelectorAll("[data-content]").forEach(element => {
+      const wert = element.dataset.content
+        .split(".")
+        .reduce((objekt, schlüssel) => objekt?.[schlüssel], data);
+
+      if (!wert) return;
+
+      if (element.tagName === "IMG") {
+        // Bildpfad aus dem JSON in src einsetzen
+        element.src = wert;
+      } else {
+        // HTML-Inhalt für h2, p usw.
+        element.innerHTML = wert;
+      }
     });
-    document.body.classList.add('geladen');
+
+    document.body.classList.add("geladen");
   })
-  .catch(err => console.error('content.json konnte nicht geladen werden:', err));
+  .catch(error => {
+    console.error("content.json konnte nicht geladen werden:", error);
+  });
+
  
 </script>
 
