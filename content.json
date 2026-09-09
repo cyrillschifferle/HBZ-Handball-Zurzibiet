@@ -4,34 +4,30 @@
     "titel": "Willkommen"
   },
   "ueber_uns": {
-    "titel": "Verein Handball Zurzibiet",
-    "text": "Hallo",
+    "titel": "Über uns",
+    "text": "Wir sind seit 2015 für Sie da und legen Wert auf persönliche Beratung. Unser Team arbeitet mit Sorgfalt und Erfahrung an jedem Projekt.<br><br>Besuchen Sie uns gerne vor Ort – wir nehmen uns Zeit für Ihr Anliegen.",
     "bild": "images/random.jpg"
   },
   "schlumpfball": {
-    "titel": "«Mini-Streethandball»",
-    "text": "Wieso denn",
-    "bild": "images/random.jpg"
+    "titel": "Kontakt",
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 /<b>Fetter Text</b> 567890<br><br>Nächster Titel oder Text"
   },
   "termine": {
-    "titel": "Termine",
-    "text": "<b>Wichtige Termine in unserer Vereinsagenda</b><br>Schützenmatt Halleneröffnung 31.10.2026<br>Weihnachtsessen aktive 05.12.2026<br>",
-    "bild": "images/random.jpg"
+    "titel": "Kontakt",
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
   },
   "teams": {
     "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text",
-    "bild": "images/2Liga_Einlauf.jpg"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
   },
   "mitmachen": {
-    "titel": "Mitmachen",
-    "text": "Deswegen",
-    "bild": "images/random.jpg"
+    "titel": "Kontakt",
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
   },
   "kontakt": {
-    "titel": "unser Vorstand",
-    "text": "<br>hallo hallo<br>",
-    "bild": "images/2Liga_Einlauf.jpg"
+    "titel": "Kontakt",
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: <b>Fetter Text</b> 01234 / 567890<br><br>Nächster Titel oder Text",
+    "bild": "images/random.jpg"
   }
 
   }
