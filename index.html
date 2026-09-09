@@ -413,29 +413,38 @@ function goToSlide(n) {
   });
 
 
- fetch("content.json")
-  .then(response => response.json())
+fetch("./content.json")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP-Fehler: ${response.status}`);
+    }
+
+    return response.json();
+  })
   .then(data => {
     document.querySelectorAll("[data-content]").forEach(element => {
-      const wert = element.dataset.content
-        .split(".")
-        .reduce((objekt, schlüssel) => objekt?.[schlüssel], data);
+      const pfad = element.dataset.content.split(".");
 
-      if (!wert) return;
+      const wert = pfad.reduce((objekt, schlüssel) => {
+        return objekt?.[schlüssel];
+      }, data);
+
+      console.log(element.dataset.content, wert);
+
+      if (wert === undefined || wert === null || wert === "") {
+        console.warn("Kein Wert gefunden:", element.dataset.content);
+        return;
+      }
 
       if (element.tagName === "IMG") {
-        // Bildpfad aus dem JSON in src einsetzen
-        element.src = wert;
+        element.setAttribute("src", wert);
       } else {
-        // HTML-Inhalt für h2, p usw.
         element.innerHTML = wert;
       }
     });
-
-    document.body.classList.add("geladen");
   })
-  .catch(error => {
-    console.error("content.json konnte nicht geladen werden:", error);
+  .catch(fehler => {
+    console.error("Fehler beim Laden der Inhalte:", fehler);
   });
 
  
