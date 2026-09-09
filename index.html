@@ -407,40 +407,42 @@ function goToSlide(n) {
   });
 
 
-fetch("./content.json")
+fetch("content.json")
   .then(response => {
     if (!response.ok) {
-      throw new Error(`HTTP-Fehler: ${response.status}`);
+      throw new Error("content.json wurde nicht gefunden");
     }
 
     return response.json();
   })
   .then(data => {
-    document.querySelectorAll("[data-content]").forEach(element => {
-      const pfad = element.dataset.content.split(".");
+    console.log("Geladene JSON-Daten:", data);
 
-      const wert = pfad.reduce((objekt, schlüssel) => {
-        return objekt?.[schlüssel];
-      }, data);
+    document.querySelectorAll("[data-content]").forEach(element => {
+      const schlüssel = element.dataset.content.split(".");
+
+      const wert = schlüssel.reduce(
+        (objekt, teil) => objekt && objekt[teil],
+        data
+      );
 
       console.log(element.dataset.content, wert);
 
       if (wert === undefined || wert === null || wert === "") {
-        console.warn("Kein Wert gefunden:", element.dataset.content);
+        console.warn("Kein Inhalt gefunden für:", element.dataset.content);
         return;
       }
 
-      if (element.tagName === "IMG") {
-        element.setAttribute("src", wert);
+      if (element.tagName.toLowerCase() === "img") {
+        element.src = wert;
       } else {
         element.innerHTML = wert;
       }
     });
   })
   .catch(fehler => {
-    console.error("Fehler beim Laden der Inhalte:", fehler);
+    console.error("Fehler:", fehler);
   });
-
  
 </script>
 
