@@ -7,25 +7,25 @@
     "titel": "Über uns",
     "text": "Wir sind seit 2015 für Sie da und legen Wert auf persönliche Beratung. Unser Team arbeitet mit Sorgfalt und Erfahrung an jedem Projekt.<br><br>Besuchen Sie uns gerne vor Ort – wir nehmen uns Zeit für Ihr Anliegen."
   },
-  "Schlumpfball": {
+  "schlumpfball": {
     "titel": "Kontakt",
     "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 /<b>Fetter Text</b> 567890<br><br>Nächster Titel oder Text"
   },
-  "Termine": {
+  "termine": {
     "titel": "Kontakt",
     "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
   },
-  "Teams": {
+  "teams": {
     "titel": "Kontakt",
     "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
   },
-  "Mitmachen": {
+  "mitmachen": {
     "titel": "Kontakt",
     "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
   },
   "kontakt": {
     "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: <b>Fetter Text</b> 01234 / 567890<br><br>Nächster Titel oder Text"
   }
 
   }
