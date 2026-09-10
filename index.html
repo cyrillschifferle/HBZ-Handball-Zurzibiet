@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grundgerüst Webseite</title>
-
+ <link rel="stylesheet" href="foundation-icons.css">
 <!-- ================= CSS ================= -->
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -260,12 +260,13 @@ h3 {
 
 
 </style>
+
 </head>
 
 <body>
 
 <!-- ================= HTML ================= -->
- <link rel="stylesheet" href="foundation-icons.css">
+
 
 <!-- Logo oben links -->
 <div class="hero">
@@ -380,7 +381,7 @@ h3 {
   <h2 data-content="kontakt.titel"></h2>
   <img data-content="kontakt.bildeins" alt="random" class="vorstand-bild">
   <p data-content="kontakt.eins"></p>
-  <a href="{{kontakt.maileins}}" ><i class="fi-mail"></i>binder-fuchs@bluewin.ch</a>
+  <a href="{{kontakt.maileins}}" ><i class="fi-mail" aria-hidden="true"></i>binder-fuchs@bluewin.ch</a>
   <br><br>
   <img data-content="kontakt.bildzwei" alt="random" class="vorstand-bild">
   <p data-content="kontakt.zwei"></p>
