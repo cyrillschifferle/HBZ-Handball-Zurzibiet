@@ -10,19 +10,22 @@
   },
   "schlumpfball": {
     "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 /<b>Fetter Text</b> 567890<br><br>Nächster Titel oder Text"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 /<b>Fetter Text</b> 567890<br><br>Nächster Titel oder Text",
+    "bild": "images/random.jpg"
   },
   "termine": {
     "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text",
+    "bild": "images/random.jpg"
   },
   "teams": {
     "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
+    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text",
+    "bild": "images/random.jpg"
   },
   "mitmachen": {
-    "titel": "Kontakt",
-    "text": "*Musterstraße* 1, 12345 Musterstadt<br>Telefon: 01234 / 567890<br><br>Nächster Titel oder Text"
+    "titel": "<h2>Mitmachen</h2>",
+    "text": "<h2>Versuch</h2> oder so <br> abstand <b>fett</b>"
   },
   "kontakt": {
     "titel": "Kontakt",
